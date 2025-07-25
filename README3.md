@@ -41,3 +41,7 @@ Now saving the modified file using the Ctrl + O command and the Enter key.
 Verifying the saved changes. 
 
 ![Linux based EC2 instance](./Img3/G.png)
+
+
+
+Overall, Vim is optimized for efficiency and capability. Many experienced Linux users and developers eventually migrate to Vim (or Emacs, another powerful but complex editor) due to its power. While the Nano editor is predominantly for beginners and has a similar working principle to Notepad.
