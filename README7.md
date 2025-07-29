@@ -1,0 +1,3 @@
+## Summary on Error Handling in shell scripting. 
+
+Error handling in shell scripting is vital for anticipating and managing issues that may arise during script execution, improving reliability and usability. Effective implementation involves identifying potential errors, utilizing conditional statements to check for conditions and command exit statuses, and providing informative error messages. A common scenario, particularly when working with AWS S3, is handling an S3 bucket existence error. To address this, scripts should verify if a bucket already exists before attempting creation, preventing unnecessary resource provisioning (like EC2 instances) and ensuring the script functions correctly even if run multiple times.
