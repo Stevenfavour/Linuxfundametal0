@@ -121,7 +121,7 @@ Login into AWS console with aacount ID (linked wih the root user), name and the 
 
 ![](/Img10/n.png)
 
-Upon sign in attempt, User John was propted to change the password. 
+Upon sign in attempt, User John was prompted to change the password. 
 
 ![](/Img10/o.png)
 
@@ -129,21 +129,21 @@ Success.
 
 ![](/Img10/p.png)
 
-As seen in the top right side of the screen, John is logged in into the console as a user under the main account ID
+As seen in the top right side of the screen, John is logged into the console as a user under the main account ID
 
 ![](/Img10/q.png)
 
-To validate the policy, John proceeds to create an ec2 instance which is the permission granted during user account creation. The EC2 instance was successfully created and initiated. 
+To validate the policy, John proceeds to create an EC2 instance, which is the permission granted during user account creation. The EC2 instance was successfully created and initiated. 
 
 ![](/Img10/r.png)
 
-To ensure that both users accces is strictky confined to their role specific resources (EC2 for John and S3 for Mary) and they cannot access other AWS services betond the premise of what the group policy permits. To validates this, John tries to create a S3 bucket; unable to proceed. 
+To ensure that both users' access is strictly confined to their role-specific resources (EC2 for John and S3 for Mary) and they cannot access other AWS services beyond the premise of what the group policy permits. To validate this, John tries to create a S3 bucket; unable to proceed. 
 
 ![](/Img10/s.png)
 
-This validation ensures adherence to the principle of least privileges, enhancing security by limiting access to only what is neccessary for each user's role. 
+This validation ensures adherence to the principle of least privileges, enhancing security by limiting access to only what is necessary for each user's role. 
 
-The server instance is deleted by John to avoid uneccessary charges. Also shows John has the permission to also delete these resources. 
+The server instance is deleted by John to avoid unnecessary charges. Also shows John has the permission to also delete these resources. 
 
 ![](/Img10/t.png)
 
@@ -151,7 +151,7 @@ The server instance is deleted by John to avoid uneccessary charges. Also shows 
 
 ### Testing Mary's access
 
-Following the steps we took for user john to gain access.
+Following the steps we took for user John to gain access.
 
 Logs into the console
 
@@ -180,7 +180,7 @@ Preventing Accidental Errors: A user with too many permissions can inadvertently
 Improving Auditability and Compliance: It's easier to track and audit actions when permissions are tightly controlled. This helps organizations meet regulatory compliance requirements and provides a clear trail of who did what, when, and where.
 
 
-## Implementing Multi Factor Authentication
+## Implementing Multi-Factor Authentication
 
 Multi-Factor Authentication (MFA) is a security feature that adds an extra layer of protection to your AWS account and resources. With MFA enabled, users are required to provide two or more forms of authentication before they can access AWS resources.
 
@@ -207,3 +207,4 @@ Upon completion.
 
 
 The above steps is also taken to enable MFA for user Mary. 
+
