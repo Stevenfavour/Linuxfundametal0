@@ -38,13 +38,13 @@ For example, the rulebook might say that the "admin" key (IAM role or user) can 
 
 IAM policies define the permissions granted to IAM roles and users, specifying which AWS resources they can access and what actions they can take. They are essential for maintaining security and controlling access to AWS resources, ensuring that only authorized actions are performed by users and roles within your AWS account.
 
-## Steps invoolved in creating custom IAM policy for User and User group for a specific role within an organization.
+## Steps involved in creating a custom IAM policy for Users and User group for a specific role within an organization.
 
 ## Part 1
 
 The goal is to create an IAM policy that grants full access to EC2. Create an IAM user named Eric and attach the EC2 access policy to him.
 
-Navigate into the AWS management console and locate IAM services dashboard.
+Navigate to the AWS management console and locate IAM services dashboard.
 
 ![](./Img11/A.png)
 
@@ -67,11 +67,11 @@ Provide the name and allow the user access to AWS management console. Create a P
 
 ![](./Img11/e.png)
 
-Attach the policy directly here by selecting "Policy_for_eric" policy.
+Attach the policy directly here by selecting the "Policy_for_eric" policy.
 
 ![](./Img11/f.png)
 
-User Eric created succesfully. Retrieve the Password. 
+User Eric was created successfully. Retrieve the Password. 
 
 ![](./Img11/g.png)
 
@@ -80,7 +80,7 @@ User Eric created succesfully. Retrieve the Password.
 
 The goal is to create an IAM group. Create two new IAM users, Jack and Ade, and add them to this group. Create a new IAM policy that grants full access to both EC2 and S3, and attach this policy to the group.
 
-Navigate to the dashboard and click on user groups on the left pane of the dashboard. Provide the name for the usergroup and then click Create User Group
+Navigate to the dashboard and click on user groups on the left pane of the dashboard. Provide the name for the user group and then click Create User Group
 
 ![](./Img11/h.png)
 
@@ -90,7 +90,7 @@ Proceed to the User section and create a user named Jack.
 
 ![](./Img11/i.png)
 
-Under Permission, Click "Add user to group" Add Jack to the previously created user group. (Dev_Team)
+Under Permission, click "Add user to group", Add Jack to the previously created user group. (Dev_Team)
 
 ![](./Img11/j.png)
 
@@ -100,7 +100,7 @@ Review and create.
 
 Follow the same process to create a user for Ade and add him to the Dev_Team Group. 
 
-Upon completion, Users Ade and Jack has been created.
+Upon completion, Users Ade and Jack have been created.
 
 ![](./Img11/l.png)
 
@@ -110,7 +110,7 @@ Specify the permissions.
 
 ![](./Img11/m.png)
 
-Provide name and description for the policy. 
+Provide the name and description for the policy. 
 
 ![](./Img11/n.png)
 
@@ -126,11 +126,11 @@ Search for the previoulsy created customer managed permission policy type and se
 
 ![](./Img11/q.png)
 
-To validate this, Navigate back to the user Jack and check for list of permissions assigned to him. 
+To validate this, navigate back to the user Jack and check for the list of permissions assigned to him. 
 
 ![](./Img11/r.png)
 
-He now has the neccessary permission to access EC2 and S3 services by the virtue of being in the Dev_Team user group. 
+He now has the necessary permission to access EC2 and S3 services by virtue of being in the Dev_Team user group. 
 
 This project of setting up IAM for Eric, Jack, and Ade directly demonstrates the core concepts of IAM.
 
@@ -142,5 +142,6 @@ Policy Creation: The project is a practical exercise in crafting IAM policies to
 
 
 Imagine Eric is a backend developer who only needs to manage EC2 instances to deploy applications. We give him a specific IAM user with a policy that only allows him to access EC2. This prevents him from accidentally (or intentionally) accessing or deleting sensitive data stored in S3 buckets.
+
 
 Meanwhile, Jack and Ade are DevOps engineers who need to manage both the EC2 instances for deployment and the S3 buckets for storing application artifacts and logs. Instead of granting each of them the same permissions individually, we create a Dev_Team group. We attach a single IAM policy to this Dev_Team group that grants full access to both EC2 and S3. Now, whenever Jack or Ade logs in, they automatically inherit the correct permissions from their group, which is a much more efficient way to manage access for a team.
