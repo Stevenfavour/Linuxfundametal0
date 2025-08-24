@@ -57,7 +57,7 @@ Lets get into it.
 
 Step 1
 
-We will start by creating a bucket with an IAM user who has the neccessary permissionn to create bucketand not working from the root user profile, following the recommended best practice. 
+We will start by creating a bucket with an IAM user who has the necessary permission to create a bucket and not work from the root user profile, following the recommended best practice. 
 
 ![](./Img12/A1.png)
 
@@ -65,7 +65,7 @@ Selecting the bucket type and specifying a bucket name. This name has to be a gl
 
 ![](./Img12/A2.png)
 
-Disable ACL (Access Control List) and also block public access to the bucket. This makes it impossible for this bucket to be accessed from anywhere asides through the console. 
+Disable ACL (Access Control List) and also block public access to the bucket. This makes it impossible for this bucket to be accessed from anywhere aside from the console. 
 
 ![](./Img12/A3.png)
 
@@ -74,11 +74,11 @@ Click Create.
 
 ![](./Img12/A4.png)
 
-iamusermary001 bucket has been created successfully and we are ready to upload a file into it by clicking Uplaod.
+iamusermary001 bucket has been created successfully, and we are ready to upload a file into it by clicking Uplaod.
 
 Step 2
 
-We will then Upload a shell script into this bucket.
+We will then upload a shell script to this bucket.
 
 ![](./Img12/B.png)
 
@@ -110,7 +110,7 @@ Then we go back to the shell script to do a few editing using Vim on the termina
 
 ![](./Img12/B7.png)
 
-Save the changes and re upload the .sh file into the bucket.
+Save the changes and re-upload the .sh file into the bucket.
 
 ![](./Img12/B8.png)
 
@@ -124,8 +124,8 @@ Under the permission tab of the bucket, locate Public acccess setting and click 
 
 ![](./Img12/C.png)
 
-Uncheck "Block all Public Access" box, this will disable the rest of the boxes.
-Then save the chnages. 
+Uncheck the "Block all Public Access" box; this will disable the rest of the boxes.
+Then save the changes. 
 
 ![](./Img12/C1.png)
 
@@ -146,7 +146,7 @@ Now, select the "Type of Policy" as "S3 Bucket Policy"
 
 Set the "Effect" to "Allow",
 
-specify the "Principal" as "**", which means all users.
+Specify the "Principal" as "**", which means all users.
 
 Choose the action "Get object" and "Get object version",
 
@@ -154,20 +154,20 @@ Choose the action "Get object" and "Get object version",
 
 In the field of Amazon Resource Name (ARN), type the ARN of your bucket and add by "/*" after the ARN. Then,
 
-click on "Add statement".
+Click on "Add statement".
 
-click on "Generate Policy".
+Click on "Generate Policy".
 
 ![](./Img12/C6.png)
 
-Copy the genearated policy
+Copy the generated policy
 
 ![](./Img12/C7.png)
 
 Copy the policy.
 
-Had issues with inputing the ARN name from the AWS policy generator.
-I had to input specify this policy manually under the Resource value of the generate json content. This ensures the policy is applied to all objects in iamusermary001 bucket
+Had issues with inputting the ARN name from the AWS policy generator.
+I had to specify this policy manually under the Resource value of the generated json content. This ensures the policy is applied to all objects in iamusermary001 bucket
 
 ![](./Img12/C8.png)
 
@@ -175,21 +175,21 @@ Success
 
 ![](./Img12/C9.png)
 
-Copy the Object url an dpaste in a browser. This opens the previous version of shell script. 
+Copy the Object url an dpaste in a browser. This opens the previous version of the shell script. 
 
 ![](./Img12/C10.png)
 
 ![](./Img12/c11.png)
 
-Copy the object url of the latest version of shell script file. 
+Copy the object URL of the latest version of the shell script file. 
 
 ![](./Img12/C12.png)
 
-Opens the modiified version of the script. 
+Opens the modified version of the script. 
 
 Step 4 
 
-This involves cretaing lifecycle policies. 
+This involves creating lifecycle policies. 
 
 
 Under the management tab of the bucket, click "Create lifecycle rule"
@@ -198,13 +198,13 @@ Under the management tab of the bucket, click "Create lifecycle rule"
 
 Specify lifecylce name 
 
-Choose a rule scope, this ensures this policy applies to only specific files in the bucket.
+Choose a rule scope; this ensures this policy applies to only specific files in the bucket.
 
-Specify prefix here we use the .sh prefix. which means only files that ends with .sh are affected by this policy. 
+Specify prefix here, we use the .sh prefix. which means only files that end with .sh are affected by this policy. 
 
 ![](./Img12/d1.png)
 
-Also specify minimum and maximum file sizes and action to be taken and it should be taken.
+Also specify minimum and maximum file sizes and the action to be taken and it should be taken.
 Here, the action should be taken after 35 days of creation. 
 
 ![](./Img12/D2.png)
@@ -215,3 +215,4 @@ Here, the action should be taken after 35 days of creation.
 Success 
 
 ![](./Img12/D4.png)
+
