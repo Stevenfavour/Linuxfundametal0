@@ -1,6 +1,6 @@
 ## NETWORKING WITH AWS VPC
 
-Before we delve into the practical aspect of this toipic, we need to understand some key terms. 
+Before we delve into the practical aspect of this topic, we need to understand some key terms. 
 
 What is a Virtual Private Cloud (VPC)?
 A Virtual Private Cloud (VPC) is a logically isolated virtual network within a public cloud. It provides a secure, private, and customizable environment for you to launch and run your cloud resources. Think of it as your own private data center, but within a public cloud provider's infrastructure. It allows you to have complete control over your network environment, including IP address ranges, subnets, route tables, and network gateways.
@@ -11,7 +11,7 @@ On AWS, Amazon VPC is the foundational networking service. It is the core buildi
 Key components of an AWS VPC are Subnets, Route Table, Internet Gateway, NAT Gateway (Network Address Translator), IP address, CIDR etc..
 
 What is Gateway 
-A gateway is a network device or software that acts as a bridge between two different networks. It's essentially an entry and exit point for data, managing the flow of traffic and translating protocols to allow communication between disparate systems. For example - Imagine you live in a city with different neighborhoods, each with its own set of houses. You're in one neighborhood, let's call it Neighborhood A, and you want to visit a friend who lives in a different neighborhood, Neighborhood B. To get from your neighborhood to your friend's neighborhood, you need to go through a gateway—a special gate that connects the two neighborhoods. This gateway acts as a bridge between the two areas, allowing people and things to pass back and forth.
+A gateway is a network device or software that acts as a bridge between two different networks. It's essentially an entry and exit point for data, managing the flow of traffic and translating protocols to allow communication between disparate systems. For example, imagine you live in a city with different neighborhoods, each with its own set of houses. You're in one neighborhood, let's call it Neighborhood A, and you want to visit a friend who lives in a different neighborhood, Neighborhood B. To get from your neighborhood to your friend's neighborhood, you need to go through a gateway—a special gate that connects the two neighborhoods. This gateway acts as a bridge between the two areas, allowing people and things to pass back and forth.
 
 So, when you leave your house in Neighborhood A, you walk to the gateway, pass through it, and then find your friend's house in Neighborhood B. The gateway helps you navigate from one neighborhood to another, just like how a network gateway helps data travel between different networks
 
@@ -65,7 +65,7 @@ The device then forwards the data packet to the specified gateway, which continu
 In summary, gateways and route tables work together to facilitate the routing of network traffic between different networks. Gateways serve as the entry and exit points between networks, while route tables provide the necessary routing information to determine how data packets should be forwarded to their destinations.
 
 
-Now lets come to the practical part
+Now, let's come to the practical part
 
 ### Step 1
 Setting up a Virtual Private Cloud
@@ -75,7 +75,7 @@ Click "Create VPC"
 
 ![](/Img13/A.png)
 
-Select VPC only, Choose our preferred IPV4 CIDR.
+Select VPC only, choose our preferred IPV4 CIDR.
 Select the configuration based on preference. 
 
 ![](/Img13/B.png)
@@ -88,12 +88,12 @@ Then click create.
 ### Step 2
 Configuring Subnets within the VPC
 
-Navigate to Subnet option on the left pane of the VPC dashboard and Click.
+Navigate to the Subnet option on the left pane of the VPC dashboard and Click.
 
 ![](/Img13/d.png)
 
 We will be creating two subnets, a public and a private subnet.
-The public will be congfigured to receive and send traffic to the internet (Public network) while the Private subnte does not.
+The public will be configured to receive and send traffic to the internet (Public network) while the Private subnet does not.
 
 This is for the private subnet setup with its IPV4 subnet CIDR block /24
 
@@ -103,7 +103,7 @@ The next is for the Public subnet.
 
 ![](/Img13/e2.png)
 
-Here is what the architecture would look like, diagramatically.
+Here is what the architecture would look like, diagrammatically.
 
 ![](/Img13/snn.png)
 
@@ -116,17 +116,17 @@ Successfully created.
 Configuring an Internet Gateway.
 
 Navigate to the "Internet Gateway" option on the left sidebar.
-Upon clicking, you wil be directed to the internet gateway page, form there proceed to click on the "Create Internet Gateway" button
+Upon clicking, you will be directed to the internet gateway page, from there proceed to click on the "Create Internet Gateway" button
 
 ![](/Img13/g.png)
 
 ![](/Img13/h.png)
 
-Now, you will notice that it is currrently detached, indicating that is is not associated with any VPC. To enable internet conectivity you must attach the gateway to the VPC previously created. 
+Now, you will notice that it is currently detached, indicating that it is not associated with any VPC. To enable internet conectivity you must attach the gateway to the VPC previously created. 
 
 ![](/Img13/i.png)
 
-After the VPC has been attached succesfully.
+After the VPC has been attached successfully.
 
 ![](/Img13/j.png)
 
@@ -137,18 +137,18 @@ Here is the updated architecture.
 
 ### Step 4
 
-Setting up routing table.
+Setting up the routing table.
 
 Proceed to the "Route Tables" option on the left pane. Once there, click on the "Create route table" button. Choose route table name and select VPC to use for this route table. Click Create route table. 
 
 ![](/Img13/k.png)
 
-Next, click on "Subnet associations", followed by "Edit Subnet associations" to associate the subnet wit this route table. we will then associate the public subnet to this route table. This is the route table the public subnet will make use of when attempting th comuncate to the outside world from within the VPC.
-Choose the public subnet and click on save association. Go to Route section and click edit routes. Select Destination as "0/0/0/0.0" indicating that every IPV4 address can access this subnet. In the target field, choose "Internet Gateway" and then select the internet gateway created earlier. 
+Next, click on "Subnet associations", followed by "Edit Subnet associations" to associate the subnet wit this route table. we will then associate the public subnet to this route table. This is the route table the public subnet will make use of when attempting to communicate to the outside world from within the VPC.
+Choose the public subnet and click on save association. Go to the Route section and click edit routes. Select Destination as "0/0/0/0.0" indicating that every IPV4 address can access this subnet. In the target field, choose "Internet Gateway" and then select the Internet Gateway created earlier. 
 
 ![](/Img13/m.png)
 
-Save the changes. This custom route table has now been configured to route traffic t the internet gateway allowing connectivity to the internet. Since only the subnet named "my_public_subnet" is associated with this route table, only resources with this subnet can access the internet.
+Save the changes. This custom route table has now been configured to route traffic to the internet gatewa,y allowing connectivity to the internet. Since only the subnet named "my_public_subnet" is associated with this route table, only resources with this subnet can access the internet.
 ![](/Img13/n.png)
 
 ![](/Img13/l.png)
@@ -168,7 +168,7 @@ Since we have no intention to expose the private network, the subnet will be con
 
 ![](/Img13/o.png)
 
-The NAT Gateway has bee=ing successfully created. 
+The NAT Gateway has been successfully created. 
 
 ![](/Img13/p.png)
 
@@ -273,7 +273,7 @@ Copy its IPV4 CIDR addresss.
 Now go back to main route table of the requester VPC. Navigate to the Route table
 ![](/Img13/v.png)
 
-Edit route from it route table. Using the copied CIDR address of the accepter VPC as the desination and select Peering connection as the target. Selected the peering connection created.
+Edit route from it route table. Using the copied CIDR address of the accepter VPC as the destination and select Peering connection as the target. Selected the peering connection created.
 
 ![](/Img13/w.png)
 
@@ -286,8 +286,8 @@ Save the changes.
 
 Repeat this process, vice versa.
 
-We have successfully configured the connection for both VPC to communcate through the Peering Connection.
-This process establishes connection between both VPCs by setting up configuration on both ends of the VPCs.
+We have successfully configured the connection for both VPC to communicate through the Peering Connection.
+This process establishes a connection between both VPCs by setting up configuration on both ends of the VPCs.
 
 ![](/Img13/7.png)
 
@@ -331,3 +331,4 @@ Cost Savings: You avoid the data processing charges associated with a NAT Gatewa
 Improved Performance: Communication is faster and has lower latency because it stays within Amazon's high-speed internal network.
 
 In this scenario, the VPC endpoint acts as a secure, private tunnel that allows the application to access the necessary AWS services without ever touching the public internet.
+
