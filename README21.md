@@ -7,7 +7,7 @@ Docker images are the building blocks of containers. They are lightweight, porta
 
 ### Pulling Images from Docker Hub
 
-Docker hub is a cloud-based registry that hosts a vast collection of docker images. Similar to git hub, you can pull images from docker hub to your local machine using the "docker pull" command.
+Docker Hub is a cloud-based registry that hosts a vast collection of docker images. Similar to git hub, you can pull images from docker hub to your local machine using the "docker pull" command.
 
 To explore available images on Docker Hub, the `docker` command provides a search subcommand. For instance, to find the Ubuntu image, you can execute:
 
@@ -18,7 +18,7 @@ This command allows you to discover and explore various images hosted on Docker 
 
 ![](./Img21/1.png)
 
-To download the officail amazon-ec2-agent image to the computer, we use the `docker pull amazon/amazon-ecs-agent` command.
+To download the official Amazon-ecs-Agent image to the computer, we use the `docker pull amazon/amazon-ecs-agent` command.
 
 
 Once an image has been successfully downloaded, you can proceed to run a container using that downloaded image by employing the "run" subcommand. If an image is not present locally when the docker run subcommand is invoked, Docker will automatically download the required image before initiating the container.
@@ -39,11 +39,11 @@ Executing this command provides a comprehensive list of all the images stored lo
 ## Task 
 ### Dockerize a Basic static web page. 
 
-We will start by lauching an ec2 instance and conncting to it.
+We will start by launching an EC2 instance and connecting to it.
 
 ![](./Img21/pre-1.png)
 
-Next, using `touch` command, a file named dockerfile is created and edited using vim editor. 
+Next, using the `touch` command, a file named dockerfile is created and edited using vim editor. 
 
 ![](./Img21/4.png)
 
@@ -53,12 +53,12 @@ While ensuring the docker file is located in the same directory as the index.htm
 
 ![](./Img21/16.png)
 
-Copy the the index.html file to the nginx default public directory, which is where the nginx serves static content from. 
-Then expose for external access on Port 80.
+Copy the index.html file to the nginx default public directory, which is where nginx serves static content from. 
+Then, expose for external access on Port 80.
 
-Having created the dockerfile, we then build.
+Having created the Dockerfile, we then build.
 
-By using `docker build -t dockerfile .` we will build the dockefile.
+By using `docker build -t dockerfile .` we will build the Dockerfile.
 
 ![](./Img21/5.png)
 
@@ -66,14 +66,14 @@ To verify this successful build, we list the available docker images.
 
 ![](./Img21/18.png)
 
-The image above highlights the new dockerfile image.
+The image above highlights the new Dockerfile image.
 
 
 To run a container based on the custom nginx image created earlier, we run the command below
 
 ![](./Img21/17.png)
 
-The webpage can not be accesible now because the ec2 server hosting the container has a security grooup attached to it and its not configured accept traffice from on port 8080. Our aim is to allow incoming traffic on port 8080.
+The webpage can not be accessible now because the EC2 server hosting the container has a security group attached to it, and it's not configured to accept traffic on port 8080. We aim to allow incoming traffic on port 8080.
 
 Navigate to the security group attached to the server and edit inbound rules to accept traffic on port 8080. 
 
@@ -81,7 +81,7 @@ Navigate to the security group attached to the server and edit inbound rules to 
 
 ![](./Img21/7.png)
 
-We will then proceed th=o start the container using the container ID
+We will then proceed to start the container using the container ID
 
 ![](./Img21/8.png)
 
@@ -99,21 +99,21 @@ Now that we have started our container, we can access the content on our web bro
 ### Pushing Images to Docker Hub
 
 
-Let's recall our git project, where we push changes made on our local computer to a remote repository (github) so everyone can track the changes we made and also collaborate on it. Now that we have created a docker images on our own computer, we need to think about how to reuse this image in the future or how do people in other region make use of this image and possibly collaborate on it. This is where Docker Hub comes in. Let's go ahead and push our image to docker hub.
+Let's recall our git project, where we push changes made on our local computer to a remote repository (github) so everyone can track the changes we made and also collaborate on it. Now that we have created a docker images on our own computer, we need to think about how to reuse this image in the future, or how do people in other region make use of this image and possibly collaborate on it. This is where Docker Hub comes in. Let's go ahead and push our image to Docker Hub.
 
 We start by creating a docker account and a repository. 
 
 ![](./Img21/11.png)
 
-Next, we rename our local docker image (to match the docker username and repository) and adding a tag. 
+Next, we rename our local docker image (to match the docker username and repository) and add a tag. 
 
 ![](./Img21/12.png)
 
-We then login to docker from the CLI. 
+We then log in to docker from the CLI. 
 
 ![](./Img21/13.png)
 
-Upon a successful login, we push the image to docker hub with the command below
+Upon a successful login, we push the image to Docker Hub with the command below
 
 ```
 docker push stevenfavour/docker_repos:1.0
@@ -121,6 +121,7 @@ docker push stevenfavour/docker_repos:1.0
 
 ![](./Img21/14.png)
 
-To verify this, we proceed to docker hub.
+To verify this, we proceed to Docker Hub.
 
 ![](./Img21/15.png)
+
