@@ -12,12 +12,12 @@ We start by updating the dependencies.
 
 ![](./Img23/1.png)
 
-We then move ahead to install java, as this is prerequisite to install and use jenkins.
+We then move ahead to install Java, as this is a prerequisite to install and use Jenkins.
 Jenkins requires Java (version 17 or later is recommended). Amazon Corretto is a good choice.
 
 ![](./Img23/2.png)
 
-Verify this succefull insatllation using `java -version` command;
+Verify this successful installation using the `java -version` command.
 
 ![](./Img23/3.png)
 
@@ -43,34 +43,34 @@ We then go ahead to install Jenkins using the `sudo yum install jenkins -y` comm
 
 ![](./Img23/6.png)
 
-After completing the installation, we verify its status;
+After completing the installation, we verify its status.
 
 ![](./Img23/7.png)
 
 The above image confirms a successful installation, but service is disabled.
 
-We will then enable the service with the `sudo syetemctl enable jenkins` command.
+We will then enable the service with the `sudo systemctl enable jenkins` command.
 
 ![](./Img23/8.png)
 
-The jenkins service is enabled but still inactive. 
+The Jenkins service is enabled but still inactive. 
 
 To activate; 
 
 ![](./Img23/9.png)
 
-On our Jenkins instance, create new inbound rules for port 8080 in security group
-By default, Jenkins listens on port 8080, we need create an inbound rule for this in the security group of our jenkins instance. But since the security group attached to the jenkins instace already has an inbound rule that allows traffic on port 8080, we move to the next steps.
+On our Jenkins instance, create new inbound rules for port 8080 in the security group
+By default, Jenkins listens on port 8080; we need to create an inbound rule for this in the security group of our Jenkins instance. But since the security group attached to the Jenkins instance already has an inbound rule that allows traffic on port 8080, we move to the next steps.
 
 ![](./Img23/10.png)
 
 ### Setting up Jenkins on the console
 
-We start by using the  Jenkins Instance ip address on the web browser i.e. http://public_ip_address:8080
+We start by using the  Jenkins instance IP address on the web browser i.e., http://public_ip_address:8080
 
 ![](./Img23/12.png)
 
-To obtain the password, navigate to the jenkins console to retreive the initial jenkins admin password. 
+To obtain the password, navigate to the Jenkins console to retrieve the initial Jenkins admin password. 
 
 ```
 sudo cat /var/lib/jenkins/secrets/initialAdminPassword
@@ -80,14 +80,15 @@ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 
 Upon running the command, the password is returned as shown above.
 
-Proceed to install suggested plugins
+Proceed to install the suggested plugins
 
 ![](./Img23/13.png)
 
-Create user account
+Create a user account
 
 ![](./Img23/14.png)
 
-Finally, Log in into the console.
+Finally, log in to the console.
+
 
 ![](./Img23/15.png)
