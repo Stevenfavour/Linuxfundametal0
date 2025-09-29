@@ -48,7 +48,7 @@ pipeline {
 
         stage('Run Docker Container') {
             steps {
-                // Stopping and removing any old container first is good practice
+                // Stopping and removing any old containers first is good practice
                 sh 'docker stop dockerfile || true' 
                 sh 'docker rm dockerfile || true' 
                 
@@ -63,7 +63,7 @@ pipeline {
 }
 ```
 
-Lets breakdown the script
+Let's break down the script
 
 `agent any` Specifies that the pipeline can run on any agent available. Could be a master agent or node agent (slave)
 
@@ -71,26 +71,26 @@ Lets breakdown the script
 
 Stage 1 connects jenkins to the github repository where the source code is.
 
-Stage 2 Build the dockerfile that resides inside the repository.
+Stage 2: Build the Dockerfile that resides inside the repository.
 
-Stage 3 Runs the built docker image. This provisions the container listening on a specific port.
+Stage 3: Runs the built Docker image. This provisions the container listening on a specific port.
 
 ![](./Img25/2.png)
 
 
 ### Overview
 
-This Snippet Generator will help you learn the Pipeline Script code which can be used to define various steps. Pick a step you are interested in frc list, configure it, click Generate Pipeline Script, and you will see a Pipeline Script statement that would call the step with that configuration. You n and paste the whole statement into your script, or pick up just the options you care about. (Most parameters are optional and can be omitted in y script, leaving them at default values.)
+This Snippet Generator will help you learn the Pipeline Script code, which can be used to define various steps. Pick a step you are interested in frc list, configure it, click Generate Pipeline Script, and you will see a Pipeline Script statement that would call the step with that configuration. You n and paste the whole statement into your script, or pick up just the options you care about. (Most parameters are optional and can be omitted in y script, leaving them at default values.)
 
 ![](./Img25/3.png)
 
-Specify the branch name and generate script.
+Specify the branch name and generate the  script.
 
 ![](./Img25/4.png)
 
-We can the copy the generated script to the pipeline to connect jenkins to github.
+We can copy the generated script to the pipeline to connect Jenkins to GitHub.
 
-Since we have installed docker using User Data when lauching the instance in the previous project, we would skip this step.
+Since we have installed docker using User Data when launching the instance in the previous project, we would skip this step.
 
 Having written the pipeline script, we save and click build.
 
@@ -102,24 +102,25 @@ The image below shows a successful pipeline build
 
 ![](./Img25/8.png)
 
-Before we can access the website, we will configure the security group attached to the ec2 server so we can access the webpage on a specific port, same port we have our container listening on.
+Before we can access the website, we will configure the security group attached to the ec2 server so we can access the webpage on a specific port, the same port we have our container listening on.
 
 ![](./Img25/7.png)
 
-We will go ahead to access the webpage. 
+We will go ahead and access the webpage. 
 
 ![](./Img25/9.png)
 
-Take note of the phone number highlighted on the image above. We will use its change to trigger an autaomatic build. (Recall that we previously configured a webhook)
+Take note of the phone number highlighted on the image above. We will use its change to trigger an automatic build. (Recall that we previously configured a webhook)
 
 ![](./Img25/10.png)
 
 The image above shows a change in the inex.html file.
 
-Upon committing the changes, a build operation will be triggered in the jenkins console.
+Upon committing the changes, a build operation will be triggered in the Jenkins console.
 
 ![](./Img25/11.png)
 
 We can see the build being triggered by a Git push
+
 
 When we reload the webpage, we can see the changes on the webpage already.
