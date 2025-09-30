@@ -1,0 +1,53 @@
+pipeline {"\n    agent any\n\n    stages {\n        stage('Connect To Github') {\n            steps {\n                    checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/RidwanAz/jenkins-scm.git']])\n            "}
+        }
+        stage('Build Docker Image') {"\n            steps {\n                script {\n                    sh 'docker build -t dockerfile .'\n                "}
+            }
+        }
+        stage('Run Docker Container') {"\n            steps {\n                script {\n                    sh 'docker run -itd -p 8081:80 dockerfile'\n                "}
+            }
+        }
+    }
+}
+
+
+
+pipeline {
+    agent any
+
+    stages {
+        stage('Connect To Github') {
+            steps {
+                // The 'checkout' step should use the 'scm' variable, not scmGit, 
+                // and the arguments look like they came from the Pipeline Syntax Generator.
+                // Assuming you want a standard checkout of the main branch:
+                checkout([
+                    $class: 'GitSCM', 
+                    branches: [[name: '*/main']], 
+                    userRemoteConfigs: [[url: 'https://github.com/Stevenfavour/MarketPeak_Ecommerce.git']]
+                ])
+            }
+        }
+
+        stage('Build Docker Image') {
+            steps {
+                // The script block is not strictly necessary for a single 'sh' command
+                // but is kept for consistency if more commands are added later.
+                sh 'docker build -t dockerfile .'
+            }
+        }
+
+        stage('Run Docker Container') {
+            steps {
+                // Stopping and removing any old container first is good practice
+                sh 'docker stop dockerfile || true' 
+                sh 'docker rm dockerfile || true' 
+                
+                // Note: The image name 'dockerfile' is unusual. You usually use 'my-app:1.0'
+                sh 'docker run -d -p 8081:80 --name dockerfile dockerfile'
+                
+                // Removed '-itd' and simplified to '-d' since interactive mode is not needed
+                // and a container name is added for easier management.
+            }
+        }
+    }
+}

@@ -1,0 +1,95 @@
+Jenkins for Ubuntu
+
+sudo apt update
+
+sudo apt install default-jdk-headless
+
+    
+wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -
+   
+ sudo sh -c 'echo deb https://pkg.jenkins.io/debian-stable binary/ > \
+    /etc/apt/sources.list.d/jenkins.list'
+   
+ sudo apt update
+    
+sudo apt-get install jenkins
+
+sudo systemctl status jenkins
+
+For Amazon Linux
+
+sudo yum update -y
+
+sudo yum install java-17-amazon-corretto -y
+
+java -version
+
+sudo wget -O /etc/yum.repos.d/jenkins.repo \
+    https://pkg.jenkins.io/redhat-stable/jenkins.repo
+
+sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
+
+sudo yum install jenkins -y
+
+sudo systemctl enable jenkins
+sudo systemctl start jenkins
+
+
+Post-Installation Setup
+Access Jenkins: Open your web browser and navigate to http://<Your_Instance_Public_IP_or_DNS>:8080.
+
+Retrieve the Initial Admin Password: You will be prompted to unlock Jenkins.
+ Run the following command on your server to get the password:
+
+Bash
+
+sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+Complete Setup: Copy the password, paste it into the browser field, and follow
+the on-screen instructions to install suggested plugins and create your first admin user.
+
+
+
+Docker
+
+Ubuntu
+
+sudo apt-get update
+
+sudo apt-get install ca-certificates curl gnupg
+
+sudo install -m 0755 -d /etc/apt/keyrings
+
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+
+sudo chmod a+r /etc/apt/keyrings/docker.gpg
+
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+  $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+sudo apt-get update
+
+
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+
+
+sudo systemctl status docker
+
+
+Amazon Linux
+
+sudo yum update
+
+sudo yum install -y docker
+
+Step	Command	Explanation
+1. Update	sudo yum update -y or sudo dnf update -y	Updates packages and refreshes the package cache.
+2. Install Docker	sudo yum install -y docker or sudo dnf install -y docker	Installs the Docker package.
+3. Start Service	sudo systemctl start docker	Starts the Docker daemon service.
+4. Enable Autostart	sudo systemctl enable docker	Configures Docker to start automatically on system boot.
+5. Add User (Optional)	sudo usermod -aG docker ec2-user	Adds the default ec2-user to the docker group so you can run Docker commands without sudo.
+6. Apply Group Change	exit then reconnect your SSH session.	This step is required for the user group change to take effect.
+7. Verify	docker run hello-world	Confirms the installation is working correctly.
+
+
