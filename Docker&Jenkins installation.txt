@@ -83,12 +83,12 @@ sudo yum update
 
 sudo yum install -y docker
 
-Step	Command	Explanation
-1. Update	sudo yum update -y or sudo dnf update -y	Updates packages and refreshes the package cache.
-2. Install Docker	sudo yum install -y docker or sudo dnf install -y docker	Installs the Docker package.
-3. Start Service	sudo systemctl start docker	Starts the Docker daemon service.
-4. Enable Autostart	sudo systemctl enable docker	Configures Docker to start automatically on system boot.
-5. Add User (Optional)	sudo usermod -aG docker ec2-user	Adds the default ec2-user to the docker group so you can run Docker commands without sudo.
+Step	Command	                                                                                                Explanation
+1. Update	              sudo yum update -y or sudo dnf update -y	                                           Updates packages and refreshes the package cache.
+2. Install Docker	      sudo yum install -y docker or sudo dnf install -y docker	                       Installs the Docker package.
+3. Start Service	       sudo systemctl start docker	                                                    Starts the Docker daemon service.
+4. Enable Autostart     sudo systemctl enable docker	                                          Configures Docker to start automatically on system boot.
+5. Add User (Optional)	sudo usermod -aG docker ec2-ser	                                      Adds the default ec2-user to the docker group so you can run Docker commands without sudo.
 6. Apply Group Change	exit then reconnect your SSH session.	This step is required for the user group change to take effect.
 7. Verify	docker run hello-world	Confirms the installation is working correctly.
 
