@@ -40,23 +40,23 @@ app.listen(port, () => {
 });
 
 ```
-Upon attemping to install npm, we ran into this error
+Upon attempting to install npm, we ran into this error
 
 ![](./Img26/npm.png)
 
-Image above indicates that before we initialize the Node.js application, we will need to install npm on our local machine.
+The image above indicates that before we initialize the Node.js application, we will need to install npm on our local machine.
 
-Using this url 
+Using this URL 
 
 ```
 https://nodejs.org/en/download
 ```
-We download node to the local machine and reattempt to install npm. To verify a successfull installation, run `node -v` , this returns the version of the installed node. Upon installation a `package-lock.json` file will be created inside the root folder of the local repo.
+We download Node to the local machine and reattempt to install npm. To verify a successful installation, run `node -v`, which returns the version of the installed node. Upon installation, a `package-lock.json` file will be created inside the root folder of the local repo.
 
-Alternatively we can install this on the CLI by using  `sudo apt install nodejs npm`
+Alternatively, we can install this on the CLI by using  `sudo apt install nodejs npm`
 
-After all these is done, we initialize node with `npm init`
-Running this command creates a package.json file inside the root folder also.
+After all this is done, we initialize Node with `npm init`
+Running this command creates a package.json file inside the root folder.
 
 We then push all the changes to the remote repository.
 ![](./Img26/3.png)
@@ -71,11 +71,11 @@ Create a .github/workflow folder in our repo (local repo is recommended for easi
 
 ![](./Img26/6.png)
 
-Inside the workflow file we will have;
+Inside the workflow file, we will have;
 
 ```
 # Name of the workflow
-name: Node.js CI
+: Node.js CI
 
 # Specifies when the workflow should be triggered
 on:
@@ -137,7 +137,7 @@ name: This simply names your workflow. It's what appears on GitHub when the work
 
 on: This section defines when the workflow is triggered. Here, it's set to activate on push and pull request events to the main branch.
 
-jobs: Jobs are a set of steps that execute on the same runner. In this example, there's one job named build.
+Jobs: Jobs are a set of steps that execute on the same runner. In this example, there's one job named build.
 
 runs-on: Defines the type of machine to run the job on. Here, it's using the latest Ubuntu virtual machine.
 
@@ -157,11 +157,11 @@ npm test: Runs tests specified in package.json.
 
 This workflow is a basic example for a Node.js project, demonstrating how to automate testing across different Node.js versions and ensuring that your code integrates and works as expected in a clean environment.
 
-Upon pushing the latest changes, a workflow is automatically triggered as specfied in  the workflow (line 7)
+Upon pushing the latest changes, a workflow is automatically triggered as specified in  the workflow (line 7)
 
 ![](./Img26/7.png)
 
-The workflow failed. Upon inestigation npm test step caused this because we have not specified any test (to test the node application)
+The workflow failed. Upon investigation npm test step caused this because we have not specified any tests (to test the node application)
 
 We can see that other steps in the job ran as they should except npm test.
 
@@ -172,7 +172,7 @@ We can see that other steps in the job ran as they should except npm test.
 Adding automated tests is a great way to ensure the quality and stability of your Node.js application, and it will integrate perfectly into the GitHub Actions workflow we've already set up.
 
 We will first need to install the testing framework into our Node.js project.
-Run the following command to install jest (The testing framework)
+Run the following command to install Jest (The testing framework)
 
 ```
 npm install jest --save-dev
@@ -183,7 +183,7 @@ npm install jest --save-dev
 
 `npm fund` to verify our installation.
 
-We then update the package.json file in our project and update the script section to define a test command that run Jest.
+We then update the package.json file in our project and update the script section to define a test command that runs Jest.
 
 ```
 "scripts": {
@@ -226,9 +226,9 @@ test('adds negative numbers correctly', () => {
 
 ![](./Img26/12.png)
 
-Typically sum.js and sum.test.js would be located in different places within your project structure.
+Typically, sum.js and sum.test.js would be located in different places within your project structure.
 
-Save thes files and run `npm test` on the terminal.
+Save these files and run `npm test` in the terminal.
 
 ![](./Img26/13.png)
 
@@ -250,7 +250,7 @@ CodeDeploy is the standard AWS service for automating application deployments to
 
 #### Setting up Code Deploy on AWS
 
-To start with, we will create an IAM role. We will attach this role to our EC2 instance (Server side). We will also give Mary (IAM user) a CodeDeploy permission as well (Deployment Initiator Side)
+To start with, we will create an IAM role. We will attach this role to our EC2 instance (server-side). We will also give Mary (IAM user) a CodeDeploy permission as well (Deployment Initiator Side)
 
 ![](./Img26/17.png)
 
@@ -260,7 +260,7 @@ The image below shows the IAM modification for the EC2 instance.
 
 #### Installing CodeDeploy on the EC2 instance.
 
-Runnning the following commands to install CodeDeplot agent
+Running the following commands to install CodeDeplot agent
 
 ```
 # Update package lists
@@ -269,7 +269,7 @@ sudo yum update
 # Install Ruby (required for the agent installation script)
 sudo yum install ruby-full wget -y
 
-# Download the installation script (using eu-north-1 as example)
+# Download the installation script (using eu-north-1 as an example)
 wget https://aws-codedeploy-eu-north-1.s3.eu-north-1.amazonaws.com/latest/install
 
 # Make the script executable
@@ -289,9 +289,9 @@ sudo service codedeploy-agent status
 
 ![](./Img26/19.png)
 
-Give the neccessary permission and Run the Installer.
+Give the necessary permission and run the Installer.
 
-The image below verifies the CodeDeloy installation.
+The image below verifies the CodeDeploy installation.
 
 ![](./Img26/21.png)
 
@@ -327,7 +327,7 @@ The image below verifies the CodeDeloy installation.
 
 ![](./Img26/22.png)
 
-Before deployment, we will need to set up IAM user (Mary) credential in GitHub as secrets as we will NOT want to hardcode these credentials insde the workflow file.
+Before deployment, we will need to set up IAM user (Mary) credential in GitHub as secrets, as we will NOT want to hardcode these credentials insde the workflow file.
 
 Setting up your AWS credentials as GitHub Secrets is the standard and most secure way to allow your GitHub Actions workflows to communicate with your AWS account.
 
@@ -335,13 +335,13 @@ Security Note: Using secrets means the credentials are never stored in your work
 
 ![](./Img26/23.png)
 
-Finally before deployment, we will assign the IAM user permission  to deploy on the AWS console since its this user credential we are maing use of.
+Finally, before deployment, we will assign the IAM user permission  to deploy on the AWS console since its this user credential we are maing use of.
 
  To start the deployment, your GitHub Actions workflow runs the `aws deploy create-deployment` command using Mary's credentials.
 
  Mary must have the permissions to initiate and manage a CodeDeploy deployment.
 
-Mary belongs a user group (Dev_Team) so all have to do is attach the right permission to the user group.
+Mary belongs to a user group (Dev_Team), so all that has to be done is attach the right permission to the user group.
 
 ![](./Img26/30.png)
 
@@ -443,11 +443,11 @@ Save the changes and Push.
 
 ![](./Img26/24.png)
 
-Deploy was succesfull
+Deploy was successful
 
 ![](./Img26/25.png)
 
-Navigate back to our s3 bucket for verification.
+Navigate back to our S3 bucket for verification.
 
 ![](./Img26/31.png)
 
@@ -459,11 +459,11 @@ But to verify our deployment, head back to the Code Deployment section, Under De
 
 The above image indicates the deployment failed to deploy to the EC2 instance.
 
-Upon  investigation by checking through the events logs
+Upon  investigation by checking through the event logs
 
 ![](./Img26/33.png)
 
-We can see that a file named start_server.sh is missing.
+We can see that a file named start_server.sh.sh is missing.
 
 This can be fixed by modifying the workflow to create a file named `start_server.sh`
 
@@ -473,9 +473,9 @@ The image above shows the action to be modified in the workflow.
 
 ![](./Img26/35.png)
 
- The image below shighlights the tasks modified in the action.
+ The image below highlights the tasks modified in the action.
 
- Push the changes to remote repo.
+ Push the changes to the remote repo.
 
 ![](./Img26/37.png)
 
@@ -483,7 +483,7 @@ The image above shows the action to be modified in the workflow.
 
 
 
- Successfully deployment.
+ Successful deployment.
 
 
 
