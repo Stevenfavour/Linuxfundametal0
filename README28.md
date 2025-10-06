@@ -4,7 +4,7 @@
 
 We begin this module by configuring build matrices. 
 
-Build matrix as discussed in the previous module allows us to run multiple versions of node builds across multiple environments.
+Build a matrix as discussed in the previous module, allows us to run multiple versions of node builds across multiple environments.
 
 A good demonstration of this is shown below. 
 
@@ -16,9 +16,9 @@ The image below verifies this.
 
 ![](/Img28/11.png)
 
-## Managing Build Dependencies by using Caching strategy.
+## Managing Build Dependencies by using a Caching strategy.
 
-Handling dependecies and services required for builds process is crucial. We utilize caching so as to reduce the time spent on downloading and installing dependencies repeatedly. 
+Handling dependencies and services required for the build process is crucial. We utilize caching so as to reduce the time spent on downloading and installing dependencies repeatedly. 
 
 The script below is an example of this. 
 
@@ -57,7 +57,7 @@ The image below shows the cache
 
 ## Integrating Code Quality Checks
 
-Here, we will code analysis tools into the Github actions workflow and configure linters and static code analyzers for maintaining code quality. 
+Here, we will code analysis tools into the GitHub actions workflow and configure linters and static code analyzers for maintaining code quality. 
 
 Before proceeding, we want to understand what the terms means.
 
@@ -68,13 +68,13 @@ Before proceeding, we want to understand what the terms means.
 
 * ESLint	ESLint is the most popular, open-source linter for JavaScript and JSX (which is used in React). It is highly configurable, allowing developers to set their own rules or use popular pre-set configurations (like those from Google, Airbnb, or Standard JS). Since your project uses Node.js, ESLint is the perfect tool for the "Code Quality Checks (Lint)" step I recommended.
 
-To set up Lint we need to run some configurations
+To set up Lint, we need to run some configurations
 
-First we configure `eslint` in the project root directory. This involves installing it as a dev dependency. 
+First, we configure `eslint` in the project root directory. This involves installing it as a dev dependency. 
 
 ![](/Img28/3.png)
 
-We then create a configuration file inside the roots of the project's directory.
+We then create a configuration file inside the root of the project's directory.
 
 ![](/Img28/13.png)
 
@@ -92,7 +92,7 @@ Afterwards, we add a lint script to the project's package.json file. This is the
 
 ![](/Img28/4.png)
 
-Finally, we update the workflow by separating `npm ci` into its own step t ensure dependencies are installed first.
+Finally, we update the workflow by separating `npm ci` into its own step to ensure dependencies are installed first.
 
 ![](/Img28/2.png)
 
@@ -102,9 +102,9 @@ run `npm run lint` to test locally so as to avoid failure on during execution on
 
 ![](/Img28/14.png)
 
-As seen above, the test was successfull. 
+As seen above, the test was successful. 
 
-We can finally push the updates to github.
+We can finally push the updates to GitHub.
 
 ![](/Img28/6.png)
 
