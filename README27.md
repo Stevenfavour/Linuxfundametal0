@@ -1,7 +1,7 @@
 ## GitHub Actions and CI/CD -YAML
 
 YAML is a human-readable data serialization standard used for configuration files. 
-Key Concept: Identation and Key-Value pairs, lists
+Key Concept: Indentation and Key-Value pairs, lists
 YAML (which stands for "YAML Ain't Markup Language") is a human-readable data serialization language that is widely used for configuration files and data exchange between programming languages.
 
 Here is an overview of its key characteristics and uses:
@@ -47,7 +47,7 @@ on: [push]
 
 Workflow File: Located in .github/workflows directory, e.g., main.yml.
 
-Jobs: Define tasks like building, testing, deploying.
+Jobs: Define tasks like building, testing, and deploying.
 
 Steps: Individual tasks within a job.
 
@@ -61,20 +61,20 @@ Runners: The server where the job runs, e.g., ubuntu-latest.
 ### Setting up Build Step
 
 #### Defining the build job: 
-In the Github action workflow e.g `./github/workflow/main.yml` start by defining a job named `build`. 
+In the GitHub action workflow e.g `./github/workflow/main.yml`, start by defining a job named `build`. 
 This job is responsible for building your code.  
 
 ![](/Img27/7.png)
 
 #### Adding build steps
 
-Each step perform a specific task and here we add couple steps; installing dependecies and running the build script.
+Each step performs a specific task,k and here we add a couple of steps: installing dependencies and running the build script.
 
 ![](/Img27/8.png)
 
-### Running tests steps in the workflow
+### Running test steps in the workflow
 
-After the build step, include steps to execute your test scripts. This is to ensure the code is not only built but also passes all neccessary steps. 
+After the build step, include steps to execute your test scripts. This is to ensure the code is not only built but also passes all necessary steps. 
 
 ![](/Img27/3.png)
 
@@ -82,25 +82,25 @@ After the build step, include steps to execute your test scripts. This is to ens
 
 ### Using Environmental Variables
 
-Environmaental variables can be defined at the workflow, job or step level. They allow you to dynamically pass congiguration and setting within the workflow. 
+Environmental variables can be defined at the workflow, job, or step level. They allow you to dynamically pass congiguration and setting within the workflow. 
 A good example of this is shown below. 
 
 ![](/Img27/4.png)
 
-Below is an image showing how it cann be used in the workflow
+Below is an image showing how it can be used in the workflow
 
 ![](/Img27/5.png)
 
 ### Working with Secrets
 
-Secrets are encrypted variables set in the repository, could be Github repository or as an environmental varible in the Azure DevOps environment.
-Ideal for storing sensitive data like keys, passwords, access tokens etc as we would not not want hardcode these data. 
+Secrets are encrypted variables set in the repository, which could be Github repository or as an environmental varible in the Azure DevOps environment.
+Ideal for storing sensitive data like keys, passwords, access tokens etc as we would not want hardcode these data. 
 
 ![](/Img27/6.png)
 
 ### Conditional Execution
 
-This helps control when jobs, steps or workflow run based on condition.
+This helps control when jobs, steps, or workflow run based on conditions.
 
 ```
 jobs:
@@ -115,7 +115,7 @@ jobs:
 
 ### Using Inputs and Outputs between steps 
 
-Share data between step in a job using outputs 
+Share data between steps in a job using outputs 
 
 ```
 jobs:
@@ -156,7 +156,7 @@ Define a Job: Start by defining a job within your workflow file (.github/workflo
 
 Add strategy and matrix: Inside the job, add a strategy block and then a matrix key.
 
-Define Variables: Under matrix, define one or more variables (axes) as lists of values. GitHub Actions automatically creates a unique job for every possible combination (permutation) of these values, and all these jobs run in parallel.
+Define Variables: Under the matrix, define one or more variables (axes) as lists of values. GitHub Actions automatically creates a unique job for every possible combination (permutation) of these values, and all these jobs run in parallel.
 
 Reference Variables: Use the matrix variables in the job's steps or in the runs-on key using the context syntax ${{ matrix.variable_name }}.
 
