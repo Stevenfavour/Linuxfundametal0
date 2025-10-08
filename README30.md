@@ -1,6 +1,6 @@
 ## Github Action and CI/CD -- Best Practices
 
-In this session, we will be making use of the previous workflow `deploy-codedeploy-prod.yml` to demostrate Github Actions best practices.
+In this session, we will utilize the previous workflow `deploy-codedeploy-prod.yml` to demonstrate GitHub Actions best practices.
 
 Below is the entire workflow we will be focusing on.
 
@@ -155,7 +155,7 @@ The image below demonstrates this.
 
 2.  **Document Your Workflows:** Add comments directly into your configuration files (like YAML) to explain the purpose and functionality of any complex or non-obvious steps.
 
-We can see how comments really helps to easily understand what certain section of the workflow does.
+We can see how comments really help to easily understand what certain section of the workflow does.
 
 ![](./Img30/2.png)
 
@@ -173,9 +173,9 @@ This practice encourages breaking down repetitive parts of a workflow into reusa
 
 **Organize workflow files:**
 
-Storing only worflow files in a dedicated directory (./github/workflow) as well as using separate and descriptive names to name these workflows.
+Storing only workflow files in a dedicated directory (./github/workflow) as well as using separate and descriptive names to name these workflows.
 
-From the image below, we can see the three different workflows each with a descriptive names thst tells us what each of these wrokflows are for.
+From the image below, we can see the three different workflows, each with a descriptive name that tells us what each of these wrokflows is for.
 
 ![](./Img30/4.png)
 
@@ -187,16 +187,16 @@ From the image below, we can see the three different workflows each with a descr
 
 Break the workflow into multiple jobs that can run in parallel. (This improves speed by running independent tasks simultaneously.)
 
-Use `strategy.matrix` for testing mulitple version of node across multiple environments. (This is a technique to run the same job multiple times with different combinations of variables, such as OS or language versions.)
+Use `strategy.matrix` for testing multiple versions of the node across multiple environments. (This is a technique to run the same job multiple times with different combinations of variables, such as OS or language versions.)
 
 ![](./Img30/5.png)
 
 
-**Caching Dependencies for faster builds** By using the `actions/cache` action to cache depemdencies and build outputs.
+**Caching Dependencies for faster builds** By using the `actions/cache` action to cache dependencies and build outputs.
 
 ![](./Img30/6.png)
 
-### Implementing Security Best practices
+### Implementing Security Best Practices
 
 #### 1. Least Privilege Principle
 
