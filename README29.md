@@ -14,14 +14,14 @@ Github provides the automation, ensuring that deployments processes are as smoot
 
 * Staging: The stable, tested code is then deployed to a production-like environment. This Staging environment is designed to closely mimic the real Production environment. The goal is to perform final, comprehensive quality checks (manual testing, performance testing, user acceptance testing) in an environment that is as close to live as possible without impacting actual end-users.
 
-* Production: This is the final step: releasing the final, verified version of the code to the end-users. The code is now live and accessible by the public or the target audience.
+* Production: This is the final step: releasing the final, verified version of the code to the end-users. The code is now live and accessible to the public or the target audience.
 
 
 ![](/Img29/14.png)
 
 The image above shows a remote repository with two branches: 
 
-`staging` is used for staging environment while `main` is commonly used for production environment. This is the most important branch where codes are deployed from to Live environments. 
+`staging` is used for the staging environment, while `main` is commonly used for the production environment. This is the most important branch where codes are deployed from to Live environments. 
 
 ### Understanding Deployment Strategies
 Here is an explanation of each strategy:
@@ -44,17 +44,17 @@ Description: This involves gradually replacing instances of the previous version
 
 Key Benefit: Allows for zero-downtime deployment by ensuring that some instances are always running the older, stable version while others are being updated.
 
-### Deploying Application to Cloud (AWS) with Github Actions
+### Deploying Application to Cloud (AWS) with GitHub Actions
 
-To deploy applications automaticaly and efficiently we first need to create a workflow. A workflow is a structured, repeatable sequence of tasks, activities, and decision points that takes a piece of work, information, or material from initiation to completion to achieve a specific goal or outcome.
+To deploy applications automatically and efficiently, we first need to create a workflow. A workflow is a structured, repeatable sequence of tasks, activities, and decision points that takes a piece of work, information, or material from initiation to completion to achieve a specific goal or outcome.
 
 It essentially defines how work gets done, acting as a roadmap that ensures consistency and clarity at every stage.
 
-Workflow files are YAML files stored in the repository inside the `.github/workflow` folder. Since we are wowrking on the main branch, we will name our workflow based on this. 
+Workflow files are YAML files stored in the repository inside the `.github/workflow` folder. Since we are working on the main branch, we will name our workflow based on this. 
 
 ![](/Img29/15.png)
 
-From the image above, we have two different deployment workflow each for different environments (production and staging)
+From the image above, we have two different deployment workflows for each environment (production and staging)
 
 
 #### Defining the workflow
@@ -93,7 +93,7 @@ jobs:
 
       #- name: Code Quality Checks (lint test)
        # run: npm run lint
-       # I want to suspend code quality check gate
+       # I want to suspend the code quality check gate
 
       - name: Build, and Test
         run: |
@@ -162,32 +162,32 @@ jobs:
 
 ```
 
-The above workflow deploys the applicattion to AWS cloud platform when changes are pushed to the main branch. 
+The above workflow deploys the application to the AWS cloud platform when changes are pushed to the main branch. 
 
-Now lets explore some aspects of the above workflow.
+Now let's explore some aspects of the above workflow.
 
 #### Configuring Deployments Environments
 
-* Environment variables are non-senstive information that can be used within the workflow. E.g Applicaton name, AWS region, Deployment Group name etc.
-The are written within the `env` block of the workflow.
+* Environment variables are non-sensitive information that can be used within the workflow. E.g., Application name, AWS region, Deployment Group name, etc.
+They are written within the `env` block of the workflow.
 
 ![](/Img29/16.png)
 
-* Secrets are sensitive informantion that cant be hardcoded into the workflow. hence, we leverage github to staore those information and reference to them from the workflow. This way these information are not exposed on the worflow and logs.
+* Secrets are sensitive information that can't be hardcoded into the workflow. Hence, we leverage GitHub to store that information and reference it from the workflow. This way this information are not exposed on the workflow and logs.
 
 ![](/Img29/11.png)
 
-This is how we refrence the above secrets inside the workflow file.
+This is how we reference the above secrets inside the workflow file.
 
 ![](/Img29/17.png)
 
-#### AWS code deploymwnt using Codedeploy on AWS
+#### AWS code deployment using CodeDeploy on AWS
 
-Earlier, we talked about deployment stategies, here we are going to be focused on the two branches and they will both have different Codedeploy application and Deployment groups. 
+Earlier, we talked about deployment stategies. Here, we are going to be focused on the two branches and they will both have different Codedeploy applications and Deployment groups. 
 
 ![](/Img29/1.png)
 
-Image above shows the deployment application for the staging environment. A blue/green deployment strategy is also implemented. 
+The image above shows the deployment application for the staging environment. A blue/green deployment strategy is also implemented. 
 
 ![](/Img29/2.png)
 
@@ -195,7 +195,7 @@ We also create a deployment group for this application.
 
 ![](/Img29/3.png)
 
-Once all these are done, we can push the changes to the remote repo and the workflow is automatically triggered (by push).
+Once all these are done, we can push the changes to the remote repo, and the workflow is automatically triggered (by push).
 
 ![](/Img29/36.png)
 
@@ -203,7 +203,7 @@ Once all these are done, we can push the changes to the remote repo and the work
 
 ### Configuring releases
 
-Releases is absically the  act of creating a formal, versioned package of your application that is ready to be delivered.
+Releases are basically the  act of creating a formal, versioned package of your application that is ready to be delivered.
 
 In a complete and safe Continuous Delivery (CD) pipeline, the order is almost always:
 
@@ -228,9 +228,9 @@ Commit and Push.
 
 ![](/Img29/5.png)
 
-Althoug from the highligted points from the image abovw, we see that deployment was successful, The release job failed.
+Althoug from the highligted points from the image abovw, we see that deployment was successful, the release job failed.
 
-Upon investigation, we discover that the failure was caused by a permission denial. One of the script does not have execution permission tha will allow the script to be executed. To solve this, we add a step to grant permission to execute the neccessary file.
+Upon investigation, we discovered that the failure was caused by a permission denial. One of the scripts does not have execution permission, which will allow the script to be executed. To solve this, we add a step to grant permission to execute the necessary file.
 
 ![](/Img29/6.png)
 
@@ -238,7 +238,7 @@ Push the changes.
 
 ![](/Img29/7.png)
 
-The release job failed again but this time the permission to push changes to the repository is absent. This is because the github-actions[bot] user, which is what semantic-release typically uses when running inside a GitHub Action, is being denied permission to push to the repository. This happens because the default GITHUB_TOKEN provided to workflows only has read permissions for the repository content, or its permissions were explicitly limited.
+The release job failed again, but this time the permission to push changes to the repository is absent. This is because the GitHub Actions [bot] user, which is what semantic-release typically uses when running inside a GitHub Action, is being denied permission to push to the repository. This happens because the default GITHUB_TOKEN provided to workflows only has read permissions for the repository content, or its permissions were explicitly limited.
 
 We need to explicitly grant write permissions to the default GITHUB_TOKEN for the workflow job that runs semantic-release.
 
@@ -294,9 +294,9 @@ Push the changes.
 
 ![](/Img29/13.png)
 
-The image above show a successful release job 
+The image above shows a successful release job 
 
-In this project, we have been able to configure a workflow that uses github action to deploy application to a cloud platform (AWS) as well as configuring Releases that handles application versioning.
+In this project, we have been able to configure a workflow that uses github action to deploy the  application to a cloud platform (AWS) as well as configure Releases that handle application versioning.
 
 
 
